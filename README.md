@@ -1,5 +1,5 @@
 ## Requisitos
-- Python 3.x
+- Python 
 - Flask
 - Requests
 
