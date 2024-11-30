@@ -13,12 +13,15 @@
    ```bash
    python -m venv venv
    ```
-3. Instala las dependencias:
+3. Una vez creado el entorno virtual, actívalo con el siguiente comando:
+   ```bash
+   .\venv\Scripts\activate
+   ```
+4. Instala las dependencias:
    ```bash
    pip install -r requirements.txt
    ```
-
-4. Ejecuta la aplicación:
+5. Ejecuta la aplicación:
    ```bash
    python app.py
    ```
