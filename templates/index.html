@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen de Inventario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Resumen de Inventario</h1>
+        <form method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+        </form>
+
+        {% if error %}
+        <div class="alert alert-danger mt-3">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <hr>
+        <h2>Resumen de Inventario</h2>
+        <p><strong>Total de registros:</strong> {{ total_registros }}</p>
+        <p><strong>Total de productos diferentes:</strong> {{ total_productos }}</p>
+
+        <h3>Productos con unidad de medida diferente a "UNIDAD"</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID Producto</th>
+                    <th>Producto</th>
+                    <th>Unidad</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos_con_uom_diferente %}
+                    <tr>
+                        <td>{{ producto['product'] }}</td>
+                        <td>{{ producto['product$_identifier'] }}</td>
+                        <td>{{ producto['uOM$_identifier'] }}</td>
+                        <td>{{ producto['quantityOnHand'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>Lista de productos con más cantidad en inventario</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID Producto</th>
+                    <th>Producto</th>
+                    <th>Unidad</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos_ordenados %}
+                    <tr>
+                        <td>{{ producto['product'] }}</td>
+                        <td>{{ producto['product$_identifier'] }}</td>
+                        <td>{{ producto['uOM$_identifier'] }}</td>
+                        <td>{{ producto['quantityOnHand'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
