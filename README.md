@@ -9,7 +9,7 @@
    ```bash
    git clone https://github.com/NorlamRS17/Backend.git
    ```
-2.En tu carpeta local crear un entorno virtual para instalar las dependencias de manera aislada:
+2. En tu carpeta local crear un entorno virtual para instalar las dependencias de manera aislada:
    ```bash
    python -m venv venv
    ```
